@@ -4,8 +4,9 @@ const Footer = () => {
     const today = new Date();
     const year = today.getFullYear();
   return (
-    <footer className="text-center mt-5">
-      <p> <small>Copyright @ {year}</small></p>
+    <footer id="footer" className="text-center mt-5 bg-dark text-white d-flex flex-column align-items-center py-3">
+      <p> <small>Copyright &copy; {year} Ishty.All right reserved</small></p>
+      
     </footer>
   );
 };

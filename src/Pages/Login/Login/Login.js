@@ -17,6 +17,7 @@ const Login = () => {
     error,
   ] = useSignInWithEmailAndPassword(auth);
   
+  console.log(error);
   if(user){
       navigate(from,{replace: true});
   }
@@ -61,12 +62,14 @@ const Login = () => {
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
+        <p className="text-danger">{error?.message}</p>
         <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
+      
       <p>
-        New to Genius Car ? 
+        New to AmaderSchool ? 
         <Link to='/register' className="text-danger pe-auto text-decoration-none" onClick={navigateRegister}>
            Please Register
         </Link>

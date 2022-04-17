@@ -55,7 +55,7 @@ const Register = () => {
 
         <input type="submit" value="Register" />
       </form>
-
+      <p className="text-danger">{error?.message}</p>
       <p>
         Already have an account ? 
         <Link to='/login' className="text-danger pe-auto text-decoration-none" onClick={navigateLogin}>
