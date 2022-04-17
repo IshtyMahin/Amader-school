@@ -1,3 +1,4 @@
+import { sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 import React, { useRef } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
@@ -13,21 +14,42 @@ const Login = () => {
   const [
     signInWithEmailAndPassword,
     user,
-    loading,
+    
     error,
   ] = useSignInWithEmailAndPassword(auth);
   
   console.log(error);
   if(user){
       navigate(from,{replace: true});
+      
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+    
     signInWithEmailAndPassword(email,password)
+    
   };
+  
+  const handlePasswordReset = () =>{
+    const email = emailRef.current.value;
+    sendPasswordResetEmail(auth,email)
+    .then(()=>{
+      console.log('email sent')
+    })
+ }
+  
+ const verifyEmail = () => {
+  sendEmailVerification(auth.currentUser)
+  .then(()=>{
+    console.log('Email verification sent')
+  })
+}
+ if(user){
+  verifyEmail();
+ }
 
   const navigateRegister = (event) => {
     navigate('/register')
@@ -62,8 +84,9 @@ const Login = () => {
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
+        <Button onClick={handlePasswordReset}  variant="link">Forget password? </Button>
         <p className="text-danger">{error?.message}</p>
-        <Button variant="primary" type="submit">
+        <Button  variant="primary" type="submit">
           Submit
         </Button>
       </Form>
