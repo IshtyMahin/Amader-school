@@ -63,7 +63,7 @@ const Register = () => {
            Please Login
         </Link>
       </p>
-      
+      <SocialLogin></SocialLogin>
     </div>
   );
 };
