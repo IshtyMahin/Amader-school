@@ -29,7 +29,7 @@ const SocialLogin = () => {
       </div>
       {errorElement}
       <div>
-        <button onClick={() => signInWithGoogle()} className="btn btn-info w-50 d-block mx-auto">
+        <button onClick={() => signInWithGoogle()} className="btn btn-info w-50 d-block mx-auto my-3">
           <FcGoogle className="mx-2"></FcGoogle>
           Google Sign In
         </button>
