@@ -87,7 +87,7 @@ const Login = () => {
         <Button onClick={handlePasswordReset}  variant="link">Forget password? </Button>
         <p className="text-danger">{error?.message}</p>
         <Button  variant="primary" type="submit">
-          Submit
+          Login
         </Button>
       </Form>
       
